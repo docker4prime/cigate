@@ -46,7 +46,7 @@ MAINTAINER Fidy Andrianaivo (fidy@andrianaivo.org)
 LABEL Description="cigate base image"
 
 # APP core dependencies
-ARG DOCKER_OS_PACKAGES="privoxy tzdata"
+ARG DOCKER_OS_PACKAGES="nginx privoxy tzdata"
 
 # APP environments
 ARG APP_NAME="cigate"

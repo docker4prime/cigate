@@ -23,7 +23,7 @@ services:
   # the cigate image
   cigate:
     image: docker4prime/cigate
-    build: .
+    build: ..
     networks:
       - my_internal_network
     ports:
