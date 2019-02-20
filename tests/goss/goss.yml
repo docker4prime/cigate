@@ -12,9 +12,6 @@ file:
 command:
   /usr/sbin/nginx -t -g "pid /var/run/nginx.pid;":
     exit-status: 0
-    stdout:
-    - syntax is ok
-    - test is successful
 
 
 # check application ports
