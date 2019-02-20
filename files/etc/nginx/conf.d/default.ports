@@ -1,0 +1,3 @@
+# This is a default example for configuring port forwarding
+server { listen 9901; proxy_pass appserver1:8080; }
+server { listen 9902; proxy_pass appserver2:8080; }

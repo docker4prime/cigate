@@ -74,6 +74,15 @@ COPY files/etc/ /etc/
 # copy test files
 COPY tests/ /tests/
 
+# run premature tests
+RUN echo "[>] adding temporary hosts entries" \
+  && echo "127.0.0.2 appserver1" >>/etc/hosts \
+  && echo "127.0.0.2 appserver2" >>/etc/hosts \
+  && nginx -t -g "pid /var/run/nginx.pid;"
+
+# define volumes
+VOLUME /etc/nginx/conf.d /var/log/nginx
+
 # expose proxy ports
 EXPOSE 1080 8080
 

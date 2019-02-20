@@ -56,10 +56,14 @@ start_daemon(){
 
 
 # starting services
+echo "[>] starting services"
+# -- service: nginx
+nginx -g "pid /var/run/nginx.pid;"
 # -- service: socks5
 start_daemon socks5
 # -- service: privoxy
 start_daemon privoxy --pidfile /run/privoxy.pid --user privoxy /etc/privoxy/config
+
 
 # if ran with arguments
 if [ -n "${1}" ];then

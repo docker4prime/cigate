@@ -39,7 +39,7 @@ if [ -n "${APP_NAME}" ];then
 else
   if docker version >/dev/null 2>&1;then
     echo "[>] running goss test defined in ${GOSSFILE_PATH} (by starting docker image ${DOCKER_IMAGE})"
-    docker run --rm -it -e APP_NAME=${PROJECT_DIRNAME} -v ${scriptFullDir}:/tmp/goss ${DOCKER_IMAGE} sh /tmp/goss/goss.sh
+    docker run --rm -it --add-host appserver1:127.0.0.1 --add-host appserver2:127.0.0.1 -e APP_NAME=${PROJECT_DIRNAME} -v ${scriptFullDir}:/tmp/goss ${DOCKER_IMAGE} sh /tmp/goss/goss.sh
   fi
 fi
 
