@@ -1,0 +1,14 @@
+# PURPOSE: goss test definitions
+
+# check file existence
+file:
+  /usr/local/bin/socks5:
+    exists: true
+  /usr/local/bin/run.sh:
+    exists: true
+
+
+# check application ports
+port:
+  tcp:8080:
+    listening: true

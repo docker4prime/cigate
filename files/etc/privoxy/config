@@ -1,0 +1,12 @@
+# mandatory settings
+confdir /etc/privoxy
+logdir /var/log/privoxy
+# logging to file (comment to disable)
+#logfile privoxy.log
+accept-intercepted-requests 0
+# disable content filtering
+toggle 0
+# listen address + port
+listen-address  0.0.0.0:8080
+# forwarding SOCKS request to socks5
+forward-socks5  / 127.0.0.1:1080  .

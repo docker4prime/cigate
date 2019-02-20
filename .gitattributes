@@ -1,0 +1,35 @@
+# PURPOSE: git attributes file for ansible projects
+
+
+# handle line endings automatically
+* text=auto
+
+# list of extension to be handled as binary
+# -- archive files
+*.7z binary
+*.gz binary
+*.jar binary
+*.war binary
+*.zip binary
+# -- document files
+*.pdf binary
+# -- font files
+*.ttf binary
+*.eot binary
+*.woff binary
+# -- library files
+*.a binary
+*.so binary
+# -- media files
+*.gif binary
+*.ico binary
+*.jpeg binary
+*.jpg binary
+*.mp3 binary
+*.mp4 binary
+*.mov binary
+*.png binary
+*.swf binary
+
+
+# eof

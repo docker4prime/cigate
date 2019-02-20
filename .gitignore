@@ -1,0 +1,25 @@
+# PURPOSE: git ignore file for ansible projects
+
+
+# exclude IDE projects files & dirs
+.DS_Store/
+.DS_Store
+.idea
+.project
+
+# exclude local work dirs
+local/
+temp/
+work/
+
+# Ignore project runtime files
+
+# exclude ansible related files
+ansible.key
+ansible.pwd
+*.retry
+*.pyc
+meta/.galaxy_install_info
+
+
+# eof
