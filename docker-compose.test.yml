@@ -2,3 +2,6 @@
 sut:
   build: .
   command: /tests/test.sh
+  extra_hosts:
+    - "appserver1:127.0.0.2"
+    - "appserver2:127.0.0.2"
