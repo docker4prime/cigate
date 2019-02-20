@@ -1,0 +1,30 @@
+# PURPOSE: example compose file for use in a docker stack
+version: "3"
+
+# network definitions
+# ===================
+networks:
+  my_internal_network:
+
+# service definitions
+# ===================
+services:
+
+  # internal application(s)
+  appserver1:
+    image: tomcat
+    networks:
+      - my_internal_network
+  appserver2:
+    image: tomcat
+    networks:
+      - my_internal_network
+
+  # the cigate image
+  cigate:
+    image: docker4prime/cigate
+    build: .
+    networks:
+      - my_internal_network
+    ports:
+    - "8080:8080"
