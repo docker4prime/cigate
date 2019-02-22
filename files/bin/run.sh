@@ -55,6 +55,12 @@ start_daemon(){
 }
 
 
+# setup requirements
+echo "[>] adding required hosts entries"
+getent ahosts appserver1 || echo "127.0.0.2 appserver1" >>/etc/hosts
+getent ahosts appserver2 || echo "127.0.0.2 appserver2" >>/etc/hosts
+
+
 # starting services
 echo "[>] starting services"
 # -- service: nginx
