@@ -1,0 +1,21 @@
+# PURPOSE: compose file for automated build tests
+version: '3'
+
+services:
+  # build to official dockerhub registry
+  # USAGE:
+  #> docker login
+  #> docker-compose -f docker-compose.build.yml build
+  #> docker-compose -f docker-compose.build.yml push dockerhub
+  dockerhub:
+    image: docker4prime/cigate
+    build: .
+  # build to private repository (gitlab)
+  # USAGE:
+  #> docker login registry.gitlab.com
+  #> docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+  #> docker-compose -f docker-compose.build.yml build
+  #> docker-compose -f docker-compose.build.yml push gitlab
+  gitlab:
+    image: registry.gitlab.com/iops/public/cigate
+    build: .
