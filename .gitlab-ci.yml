@@ -1,0 +1,53 @@
+# GITLAB-CI job definition file for this repository
+
+
+# COMMON PREPARATION TASKS
+# ========================
+before_script:
+  # show environment info
+  - echo "=> Running as USER $(whoami) on SERVER $(hostname -f)"
+  - echo "=> Working dir is $(pwd)"
+  # show content of build path
+  - ls -la
+
+
+
+
+# JOB ENTRIES
+# =============
+
+# build latest image tag
+docker_image_latest:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker build -t ${CI_REGISTRY_IMAGE}:latest .
+    - docker push ${CI_REGISTRY_IMAGE}:latest
+  only:
+    - master
+  tags:
+    - docker
+
+# build image tag based on current tag/branch name
+docker_image_byrefs:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker login -u ${CI_REGISTRY_USER} -p ${CI_REGISTRY_PASSWORD} ${CI_REGISTRY}
+    - docker build -t ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME} .
+    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
+  only:
+    - branches
+    - tags
+  except:
+    - master
+  tags:
+    - docker
+
+
+# eof
